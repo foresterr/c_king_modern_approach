@@ -1,0 +1,1 @@
+Yes it would. Those expressions are equivalent; I can kinda see the shape of how it works but can't write out a formal proof or equation.

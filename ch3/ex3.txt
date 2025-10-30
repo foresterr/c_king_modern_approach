@@ -1,0 +1,28 @@
+- whitespace in input is skipped when looking for something matching a format specifier
+- whitespace in input is not skipped when looking for something matching a literal non-whitespace character
+- whitespace in format string can match any number of whitespace characters, including none
+
+So, in general, any format string whitespace that is directly before a format specifier is meaningless.
+If there are any literal characters in there other than whitespace, then how whitespace is placed might be important.
+Note that after scanning last item that matches format string (either a formatted number or a literal character), next item is the one from which another call of scanf will start, whitespace or not.
+
+ex. "%d-%d-%d" vs "%d -%d -%d", former will match 1-2-3 and 1- 2- 3 but not 1 -2 -3 (also, it will read 1,2,3 because minuses will be "eaten" by the literal matches). Latter will match all of them.
+ex. "%f,%f" vs "%f, %f" are equivalent. Both will match 1,2 or 1, 2. Neither will match 1 ,2
+
+Surprisingly "%f" and "%f " are not 100% equivalent. The former will leave the reading "cursor" at whatever was right after the matched floating point number (typically, newline). The latter will also scan any whitespace (including newlines) and leave the "cursor" at first NON whitespace character after. So with a single scanf call it makes no difference, but if there is another one after, it will be looking at a different input. Note, if the input is just numbers matching format specifiers and whitespace, this will make zero practical difference (remember that format specifier matches a number in correct format + any amount of preceding whitespace)
+
+Example:
+scanf("%d", &a);
+scanf("a%d, &b);
+
+will crap out (nothing will be read into b) on this input:
+5¤a6¤
+because it will leave the newline after 5, and next scanf won't be able to match literal "a" to this newline.
+
+But
+scanf("%d ", &a);
+scanf("a%d, &b);
+
+will read 5 into a and 6 into b, because the newline between 5 and a will have been scanned over by the first scanf call
+
+ALSO: scanf("%d ", &x) should "hang" until a non-whitespace character is entered - and indeed this is the case, you can press enter till the cows come home.

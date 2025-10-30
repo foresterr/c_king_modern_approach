@@ -1,0 +1,4 @@
+No. -(i/j) is unambiguous: divide i/j, truncate towards zero (positive integer division
+always truncates towards zero), then make it negative. (-i)/j is implementation dependent,
+the result will be truncated towards zero or down (unless it's C99, then it will be always
+towards zero and the expressions are equivalent).

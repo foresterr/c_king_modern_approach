@@ -1,0 +1,4 @@
+if (n >= 1 <= 10) printf("n is between 1 and 10")
+is legal
+
+When n == 0, it prints the output (n >= 1 evaluates to 0, 0 <= 10 evaluates to true, if block executes)
