@@ -1,0 +1,1 @@
+(c) is not equivalent because the loop will always execute at least once even if i < 10 to start with, other 2 loops won't execute at all in such a case

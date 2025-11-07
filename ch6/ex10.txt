@@ -1,0 +1,2 @@
+Put a label at the beginning of the loop, and GOTO there
+OK, no. Put the label at the end of the loop, put a null statement after it, and GOTO there. My initial idea would cause an endless loop of GOTOs

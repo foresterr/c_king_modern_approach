@@ -1,0 +1,1 @@
+(c) is not equivalent. This is because second statement is evaluated at start of loop execution - so for first 2 statements i will be 0 during first loop execution, but for (c) it will be 1 and so on. However all loops will execute 10 times.

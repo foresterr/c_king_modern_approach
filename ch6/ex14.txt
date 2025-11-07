@@ -1,0 +1,1 @@
+Semicolon after if - this is a null statement which will be executed if the condition is true, and the printf call will be executed unconditionally
