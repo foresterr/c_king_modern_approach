@@ -1,0 +1,6 @@
+Assuming this is a 64bit machine.
+
+typedef signed char Int8;
+typedef short Int16;
+typedef int Int32;
+

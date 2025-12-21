@@ -1,0 +1,7 @@
+strcpy(s1, "computer"); //s1 = computer, s2 uninitialized
+strcpy(s2, "science"); //s1 = computer, s2 = science
+if (strcmp(s1, s2) < 0) //this is true, because 'c' < 's'
+  strcat(s1, s2);
+else
+  strcat(s2, s1); // s1 = computerscience, s2 = science
+s1[strlen(s1)-6] = '\0'; //s1[15-6 (9)] = '\0', so s1 = computers (with some chars stored past \0 but they shouldn't matter), s2 = science

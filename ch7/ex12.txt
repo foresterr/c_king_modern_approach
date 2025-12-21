@@ -1,0 +1,4 @@
+d = i + f
+
+first i gets promoted to float and added to f. then the result is casted to double.
+

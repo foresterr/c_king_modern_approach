@@ -1,0 +1,25 @@
+void pb(int n)
+{
+  if (n != 0) {
+    pb(n / 2);
+    putchar('0' + n % 2);
+  }
+}
+
+It's recursive. Also it does not return anything.
+OK, let's assume n is 10 to start with.
+
+pb(10)
+  pb(5)
+    pb(2)
+      pb(1)
+        pb(0)
+        does nothing
+      putchars 1
+    putchars 0
+  putchars 1
+putchars 0
+
+So in the end, it should output 1010
+Indeed, it does so.
+What it does in effect is to print out a binary representation of a decimal number. Neat.

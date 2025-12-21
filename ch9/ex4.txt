@@ -1,0 +1,9 @@
+int day_of_year(int month, int day, int year)
+{
+  int total = 0;
+  int month_days[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+  month_days[1] += ((year % 4 == 0) && (year % 100 != 0) || (year % 400 == 0));
+  for (int i = 0; i < month; i++)
+    total += month_days[i];
+  return total + day;
+}

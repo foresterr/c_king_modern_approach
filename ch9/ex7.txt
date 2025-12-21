@@ -1,0 +1,5 @@
+a) legal, no conversions will happen
+b) legal, result will be cast to double
+c) legal, arguments will be cast to int first
+d) legal, arguments will be cast to int first, and then the result will be cast to double
+e) also legal, but if the function has no side effects, this will be a meaningless expression statement

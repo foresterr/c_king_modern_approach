@@ -1,0 +1,9 @@
+A program with just one function (main) could theoretically contain any number of variables named i:
+- one global
+- one local to main
+- there is no limitation on the number of blocks (nested or not) that main can contain,
+  and each of those blocks can have its own variable named i (also, in C99, it can be any number of for loops
+  that declare their own i, for loop has its own scope so if body of the loop is a block it can even have its
+  own i variable declared that will shadow loop's i variable)
+
+There might be some hard limit due to some kind of technical limitation (maybe implementation, and if nothing else, memory size)

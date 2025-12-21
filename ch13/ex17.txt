@@ -1,0 +1,15 @@
+bool test_extension(const char *file_name, const char *extension)
+{
+  const char *pf = file_name, *pe = extension;
+  while (*pf)
+    pf++; // points at null terminator
+  while (*pe)
+    pe++; // same
+  while (toupper(*pe) == toupper(*pf)) {
+    if (pf <= file_name) return false;
+    pf--;
+    if (pe <= extension) break;
+    pe--;
+  }
+  return (bool)(*pf == '.');
+}

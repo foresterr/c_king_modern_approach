@@ -1,0 +1,13 @@
+#include <stdio.h>
+
+int main(void)
+{
+  char s[] = "Hsjodi", *p;
+  for (p = s; *p; p++)
+    --*p;
+  puts(s);
+  return 0;
+}
+
+This decrements each character in the string by 1 and prints the resulting string.
+So, it prints "Grinch"

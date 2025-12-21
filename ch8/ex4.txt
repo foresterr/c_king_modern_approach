@@ -1,0 +1,2 @@
+bool weekend[] = {true, [6] = true};
+//array will have 7 elements automatically, everything not initialized as true will be false (0)

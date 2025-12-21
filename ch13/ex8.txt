@@ -1,0 +1,8 @@
+strcpy(str, "tire-bouchon");
+strcpy(&str[4], "d-or-wi");
+strcat(str, "red?");
+
+contents of str after
+1st: tire-bouchon\0
+2nd: tired-or-wi\0\0
+3rd: tired-or-wired?\0

@@ -1,0 +1,66 @@
+Original read_line:
+
+int read_line(char str[], int n)
+{
+  int ch, i = 0;
+  while ((ch = getchar()) != '\n')
+    if (i < n)
+      str[i++] = ch;
+  str[i] = '\0'; /* terminates string */
+  return i; /* number of characters stored */
+}
+
+isspace(char) is in ctype.h
+
+a) skip white space before beginning to store
+
+int read_line(char str[], int n)
+{
+  int ch, i = 0;
+  while (isspace(ch = getchar());
+  do { //ch is already "initialized" and by reexecuting getchar at the beginning of the loop we'd lose a character, so we switch to do loop
+    if (i < n) //official solution: check it here, and know that we are at beginning because i == 0
+      str[i++] = ch
+  } while ((ch = getchar()) != '\n');
+  str[i] = '\0'; /* terminates string */
+  return i; /* number of characters stored */
+}
+
+b) stop reading at first white space character
+
+int read_line(char str[], int n)
+{
+  int ch, i = 0;
+  while (!isspace(ch = getchar()))
+    if (i < n)
+      str[i++] = ch;
+  str[i] = '\0'; /* terminates string */
+  return i; /* number of characters stored */
+}
+
+c) stop reading at first newline, but store newline in the string
+
+int read_line(char str[], int n)
+{
+  int ch, i = 0;
+  do {
+    ch = getchar(); //this is from official solution, mine was similar but I unnecessarily left getchar() inside loop condition, and had to add another getchar() in fron of the loop to compensate
+    if (i < n)
+      str[i++] = ch;
+  } while (ch != '\n');
+  str[i] = '\0'; /* terminates string */
+  return i; /* number of characters stored */
+}
+
+d) leave behind characters it does not have room to store
+
+int read_line(char str[], int n)
+{
+  int ch, i = 0;
+  while ((ch = getchar()) != '\n')
+    if (i < n)
+      str[i++] = ch;
+    if (i == n) break; //official solution switches to for loop, but this should work too. that for loop also has if (except checking for ch = '\n') so it's not more parsimonious... \n gets tossed by it too
+  str[i] = '\0'; /* terminates string */
+  return i; /* number of characters stored */
+}

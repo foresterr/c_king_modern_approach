@@ -1,0 +1,11 @@
+(a) printf("%c", '\n'); correct, %c formatting spec expects a char argument
+(b) printf("%c", "\n"); incorrect, %c expects a char argument, but gets pointer to char
+(c) printf("%s", '\n'); incorrect, %s expects pointer to char, but gets char
+(d) printf("%s", "\n"); correct, %s expects pointer to char argument
+(e) printf('\n'); incorrect, first argumet to printf must be a pointer to char (aka "a string")
+(f) printf("\n"); correct
+(g) putchar('\n'); correct
+(h) putchar("\n"); incorrect, expects char, gets pointer to char
+(i) puts('\n'); incorrect, expects pointer to char, gets char
+(j) puts("\n"); correct
+(k) puts(""); correct (empty string is still a valid string/pointer to char)

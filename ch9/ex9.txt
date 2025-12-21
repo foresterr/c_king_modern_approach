@@ -1,0 +1,1 @@
+The function will do nothing visible from the outside (it only operates on local variables), so the program will print i = 1, j = 2

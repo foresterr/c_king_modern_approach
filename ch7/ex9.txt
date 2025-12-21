@@ -1,0 +1,3 @@
+int
+type of j + 'a' is int ('a' gets promoted), and type of i / j is also int (plain integer division)
+

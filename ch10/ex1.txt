@@ -1,0 +1,25 @@
+int a;
+
+void f(int b)
+{
+  int c;
+}
+
+void g(void)
+{
+  int d;
+  {
+    int e;
+  }
+}
+
+int main(void)
+{
+  int f;
+}
+
+In scope of:
+a) f: a (global), b (parameter), c (local variable)
+b) g: a (global), d (local)
+c) block: a (global), e (local to block), d (local to function)
+e) main: a (global), f (local to main)

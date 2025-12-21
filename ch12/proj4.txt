@@ -1,0 +1,4 @@
+Sorry, I already did it that way from the start
+
+The only difference would be substituting "&array[0]" with "array", and "&array[index]" with "array + index"
+

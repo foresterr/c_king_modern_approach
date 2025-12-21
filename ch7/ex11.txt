@@ -1,0 +1,3 @@
+double
+f / d is double (as f gets promoted), and i * also gets promoted to double
+

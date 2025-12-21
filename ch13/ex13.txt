@@ -1,0 +1,7 @@
+void build_index_url(const char *domain, char *index_url)
+{
+  // those function calls could also be chained as each returns pointer equal to index_url, but I find it less legible
+  strcpy(index_url, "http://www.");
+  strcat(index_url, domain);
+  strcat(index_url, "/index.html");
+}

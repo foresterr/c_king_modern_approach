@@ -1,0 +1,33 @@
+int evaluate_position(char board[8][8])
+{
+  int evaluation = 0;
+  for (char *p = board[0]; p < board[0] + 8 * 8; p++) {
+    switch (*p) {
+      case 'Q':
+        evaluation += 9;
+        break;
+      case 'q':
+        evaluation -= 9;
+        break;
+      case 'R':
+        evaluation += 5;
+        break;
+      case 'r':
+        evaluation -= 5;
+        break;
+      case 'B': case 'N':
+        evaluation += 3;
+        break;
+      case 'b': case 'n':
+        evaluation -= 3;
+        break;
+      case 'P':
+        evaluation++;
+        break;
+      case 'p':
+        evaluation--;
+        break;
+    }
+  }
+  return evaluation;
+}

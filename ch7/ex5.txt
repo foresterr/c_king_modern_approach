@@ -1,0 +1,1 @@
+0b1000001 is illegal, there is no provision in standard C for binary constants like that

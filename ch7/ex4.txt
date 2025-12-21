@@ -1,0 +1,1 @@
+printf(c) is illegal - first argument to printf must be a string

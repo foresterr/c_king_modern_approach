@@ -1,0 +1,35 @@
+int evaluate_position(char board[8][8])
+{
+  int evaluation = 0;
+  for (int i = 0; i < 8; i++) {
+    for (int j = 0; j < 8; j++) {
+      switch (board[i][j]) {
+        case 'Q':
+          evaluation += 9;
+          break;
+        case 'q':
+          evaluation -= 9;
+          break;
+        case 'R':
+          evaluation += 5;
+          break;
+        case 'r':
+          evaluation -= 5;
+          break;
+        case 'B': case 'N':
+          evaluation += 3;
+          break;
+        case 'b': case 'n':
+          evaluation -= 3;
+          break;
+        case 'P':
+          evaluation++;
+          break;
+        case 'p':
+          evaluation--;
+          break;
+      }
+    }
+  }
+  return evaluation;
+}

@@ -1,0 +1,13 @@
+#include <string.h>
+
+void censor(char *str)
+{
+  while (*str) {
+    if (strcmp(str, "foo") == 0) //this is safe, str won't be evaluated past /0
+      // strcpy will copy \0 into the string, so it's not suitable here, unless with workarounds
+      *str = *(str + 1) = *(str + 2) = 'x';
+      str += 3;
+    else
+      str++;
+  } 
+}

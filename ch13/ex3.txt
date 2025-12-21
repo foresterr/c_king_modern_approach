@@ -1,0 +1,8 @@
+scanf("%d%s%d", &i, s, &j)
+i and j are int, s is a char array
+
+user enters 12abc34 56def78
+
+first %d matches 12, 12 gets stored in i
+%s matches abc34 (%s does not match whitespace), 'a','b','c','3','4','\0' get stored in s
+second %d skips over whitespace, matches 56, 56 gets stored in j

@@ -1,0 +1,9 @@
+int a[] = {5, 15, 34, 54, 14, 2, 52, 72};
+int *p = &a[1], *q = &a[5];
+
+*(p + 3) = 14 (same as a[4])
+*(q - 3) = 34 (same as a[2])
+q - p = 4
+p < q is true
+*p < *q is false (15 < 2)
+

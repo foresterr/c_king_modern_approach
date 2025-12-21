@@ -1,0 +1,4 @@
+(a) *str = 0;
+(b) str[0] = '\0';
+(c) strcpy(str, "");
+(d) strcat(str, ""); <- this one is not equivalent. the others will put '\0' as the first character of str (effectively making it into empty string). this one will concatenate empty string to str, effectively doing nothing.

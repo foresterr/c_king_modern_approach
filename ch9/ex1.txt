@@ -1,0 +1,20 @@
+Original:
+double triangle_area(double base, height)
+double product;
+{
+  product = base * height;
+  return product / 2;
+}
+
+Errors:
+- no type for second argument in definition
+- declaration of product needs to be in the function body
+
+So it should be:
+
+double triangle_area(double base, double height)
+{
+  double product;
+  product = base * height;
+  return product / 2;
+}

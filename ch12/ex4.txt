@@ -1,0 +1,17 @@
+int contents[STACK_SIZE];
+int *top_ptr = contents;
+
+void make_empty(void)
+{
+  top_ptr = contents; //or &contents[0]; for one dimensional array it's the same: &(*contents + 0)
+}
+
+bool is_empty(void)
+{
+  return top_ptr == contents;
+}
+
+bool is_full(void)
+{
+return top_ptr == contents + STACK_SIZE; //or *top_ptr == &contents[STACK_SIZE]; note that when the stack is full the pointer is "one beyond" - outside of the array
+}

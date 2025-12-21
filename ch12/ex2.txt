@@ -1,0 +1,4 @@
+middle = (low + high) / 2 is illegal because there is no "pointer addition" or "pointer division by integer".
+
+Same result (I suppose - finding a pointer to the middle location in array, rounded down in case of odd distance) would be achieved by:
+middle = low + ((high - low) / 2) (result of pointer subtraction is an integer, which can be divided, and the result can be added to a pointer)

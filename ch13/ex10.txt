@@ -1,0 +1,11 @@
+char *duplicate(const char *p)
+{
+  char *q;
+  strcpy(q, p);
+  return q;
+}
+
+q is an uninitialized pointer, so copying into is undefined behaviour
+btw, returning q as such is fine - what's bad is returning pointers to local variables (so if q *was* initialized, but pointing to a local char array, it would also be bad)
+so the only way for this function to work properly would be to provide target pointer as parameter (and then it's identical to strcpy anyway)?
+unless we can make the pointer point to something that persists outside of function scope (based on answer, sounds like this something is related to dynamic memory allocation)

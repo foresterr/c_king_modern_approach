@@ -1,0 +1,15 @@
+But I already did T_T
+
+Let's write it non-recursively then.
+
+int gcd(int m, int n)
+{
+  int temp;
+  while (n > 0) {
+    swap = n;
+    n = m % n;
+    m = s;
+  }
+  return m;
+}
+

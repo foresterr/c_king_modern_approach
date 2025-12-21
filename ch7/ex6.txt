@@ -1,0 +1,5 @@
+Days in a month - char (no more than 31, so, less than 255 / one byte)
+Days in a year - short (365, so more than 255, but less than 32767 / two bytes)
+Minutes in a day - short (1440, so again as above)
+Seconds in a day - int or long (depends on machine, int can be equivalent to short and 86400 won't fit in 32767, four bytes are needed)
+

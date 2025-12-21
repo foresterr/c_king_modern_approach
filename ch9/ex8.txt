@@ -1,0 +1,3 @@
+void f(double x) and void f(double).
+
+void f(x) does not specify argument type which is illegal, and f(double x) does not specify return type which will either default to int, or be illegal in C99

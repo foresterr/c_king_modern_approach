@@ -1,0 +1,17 @@
+Original:
+int sum_two_dimensional_array(const int a[][LEN], int n)
+{
+  int i, j, sum = 0;
+  for (i = 0; i < n; i++)
+    for (j = 0; j < LEN; j++)
+      sum += a[i][j];
+  return sum;
+}
+
+Rewritten:
+int sum_two_dimensional_array(const int a[][LEN], int n) {
+  int sum = 0;
+  for (int *p = a[0]; p < a[0] + n * LEN; p++)
+    sum += *p;
+  return sum;
+}

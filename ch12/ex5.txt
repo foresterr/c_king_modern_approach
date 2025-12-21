@@ -1,0 +1,8 @@
+ a is a one-dimensional array and p is a pointer variable.
+
+ p = a;
+
+ p == a[0] is illegal, p has pointer to type of array element type, and a[0] has array element type
+ p == &a[0] is legal, we are comparing two pointers of the same type
+ *p == a[0] is legal, we are comparing value of type of what the pointer points to (array element) to value of type of array element
+ p[0] == a[0] is valid because pointer can be subscripted just like an array, and the type will be the same (subscript is dereference + pointer arithmetic: p[0] == *p, and a[0] == *a, and we just made sure a and p point to the same thing)

@@ -1,0 +1,11 @@
+i is a variable and p points to i
+
+*p is alias for i
+&p is not an alias for i (it's a pointer to a pointer)
+*&p is an alias for p, not for i
+&*p is also an alias for p
+*i is not an alias for i, applying indirection to non pointer variable is illegal
+&i is alias for p, not for i
+*&i is an alias for i
+&*i would be an alias for i but applying indirection to non pointer variable is illegal
+

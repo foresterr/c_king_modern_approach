@@ -1,0 +1,4 @@
+With sizeof(a)/sizeof(a[0]) we just need the variable name holding the array (or pointer to the array, whateva)
+
+With sizeof(a)/sizeof(t) we need to find out what is the type of array elements in advance.
+

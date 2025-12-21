@@ -1,0 +1,13 @@
+i is int variable, p and q are pointers to int
+
+I suppose a definition of what is "illegal" is important. I'd say "illegal" is forbidden by language (compiler error), not a compiler warning because of an implicit cast
+
+p = i is legal but iffy (implicit type conversion), integers can be cast to pointers
+*p = &i is legal
+&p = q is illegal, result of address (&) operator is not an lvalue (result of indirection * operator is one)
+p = &q is legal but iffy, pointers to pointers can be cast to pointers to integers (I suppose pointers to any type can be cast to pointers to any type, as the actual representation is often the same)
+p = *&q is legal (same as p = q)
+p = q is of course legal
+p = *q is legal but iffy, integers can be cast to pointers
+*p = q is legal but iffy, pointers can be cast to integers
+*p = *q is legal (copy what p points to into what q points to)

@@ -1,0 +1,6 @@
+a) 010E2 - legal, floating point (floating point constant because it contains an exponent, nothing about preceding zeros being invalid)
+b) 32.1E+5 - legal, floating point (+ is optional, but legal)
+c) 0790 - legal, integer (in octal)
+d) 100_000 - illegal
+e) 3.978e-2 - legal, floating point
+

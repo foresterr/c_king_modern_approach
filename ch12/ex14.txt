@@ -1,0 +1,1 @@
+search(temperatures[0], 7 * 24, 32);

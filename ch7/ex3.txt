@@ -1,0 +1,1 @@
+"short float" is illegal, the rest is OK

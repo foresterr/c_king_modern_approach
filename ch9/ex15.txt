@@ -1,0 +1,38 @@
+Original:
+
+double median(double x, double y, double z)
+{
+  if (x <= y)
+    if (y <= z) return y;
+    else if (x <= z) return z;
+  else return x;
+  if (z <= y) return y;
+  if (x <= z) return x;
+  return z;
+}
+
+Uhh.
+
+double median(double x, double y, double z)
+{
+  double temp;
+  if (x > y) {
+    temp = x;
+    x = y;
+    y = temp;
+  }
+  if (y > z) {
+    temp = y;
+    y = z;
+    z = temp;
+    if (x > y) {
+      temp = x;
+      x = y;
+      y = temp;
+    }
+  }
+  return y;
+  // this was some kind of idiot manual sort (bubble sort?)
+  // other ways: horrible ternary expression if we want to up the confusion factor
+  // official answer was to replace each "return" with assignment to local variable, and then return local variable, which is just as confusing IMO
+}

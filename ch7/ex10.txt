@@ -1,0 +1,3 @@
+unsigned int
+(int) j casts j to int explicitly, then (int) j * k is of type unsigned int (as unsigned type is wider), and finally i + also gets promoted to unsigned int
+

@@ -1,0 +1,25 @@
+Original code:
+#define N 10
+
+double ident[N][N];
+int row, col;
+
+for (row = 0; row < N; row++)
+  for (col = 0; col < N; col++)
+    if (row == col)
+      ident[row][col] = 1.0;
+    else
+      ident[row][col] = 0.0;
+
+Rewritten:
+double *p;
+int n = 10;
+for (p = ident[0]; p < ident[0] + N * N; p++) {
+  if (n == N) {
+    *p = 1.0;
+    n = 0;
+  } else {
+    *p = 0.0;
+    n++;
+  }
+}

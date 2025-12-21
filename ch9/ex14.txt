@@ -1,0 +1,24 @@
+Original:
+bool has_zero(int a[], int n)
+{
+	int i;
+	for (i = 0; i < n; i++)
+		if (a[i] == 0)
+			return true;
+		else
+			return false;
+}
+
+So the problem is, it will always return after checking just the first element, and if it's non-zero, it will return false which is incorrect if array has 0 at a further element.
+
+Fixed:
+
+bool has_zero(int a[], int n)
+{
+  for (int i = 0; i < n; i++)
+    if (a[i] == 0)
+      return true;
+    return false;
+}
+
+This will return true if it encounters any 0, and return false after it goes through all array elements without encountering any 0

@@ -1,0 +1,5 @@
+\b = \010 (leading zero in octal escapes is optional, but maybe best to keep it for consistency)
+\n = \012
+\r = \015
+\t = \011
+

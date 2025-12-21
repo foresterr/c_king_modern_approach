@@ -1,0 +1,2 @@
+no - range of float is larger than range of int, so casting f to int will give undefined behavior in some cases
+

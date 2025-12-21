@@ -1,0 +1,6 @@
+char *p = "abc";
+
+(a) putchar(p); invalid, putchar expects a char, not pointer to char (would probably print garbage)
+(b) putchar(*p); valid, prints "a" - p by itself points to first character of "abc\0"
+(c) puts(p); valid, prints "abc"
+(d) puts(*p); invalid, puts expect pointer to char, but *p is just a char (would probably refer to invalid memory location with horrible consequences)

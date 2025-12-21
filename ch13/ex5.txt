@@ -1,0 +1,20 @@
+a)
+#include <ctype.h>
+
+void capitalize(char *str) {
+  int i = 0;
+  while (str[i] != '\0') {
+    str[i] = toupper(str[i]);
+    i++;
+  }
+}
+
+b)
+#include <ctype.h>
+
+void capitalize(char *str) {
+  while (*str != '\0') {
+    *str = toupper(*str);
+    str++;
+  }
+}
