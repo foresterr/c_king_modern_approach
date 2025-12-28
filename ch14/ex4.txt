@@ -1,0 +1,15 @@
+#define AVG(x,y) (x+y)/2
+
+Problem: 3/AVG(2,4) = 3/(2+4)/2 = 0 (expected 1)
+
+Fix:
+#define AVG(x,y) (((x)+(y))/2)
+
+
+#define AREA(x,y) (x)*(y)
+
+Problem: 10/AREA(5,2) = 10/5*2 = 4 (expected 1)
+
+Fix:
+#define AREA(x,y) ((x)*(y))
+

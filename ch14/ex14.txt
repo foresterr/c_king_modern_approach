@@ -1,0 +1,51 @@
+#define N = 10
+#define INC(x) x+1
+#define SUB (x,y) x-y
+#define SQR(x) ((x)*(x))
+#define CUBE(x) (SQR(x)*(x))
+#define M1(x,y) x##y
+#define M2(x,y) #x #y
+
+int main(void)
+{
+  int a[N], i, j, k, m;
+#ifdef N
+  i = j;
+#else
+  j = i;
+#endif
+  i = 10 * INC(j);
+  i = SUB(j, k);
+  i = SQR(SQR(j));
+  i = CUBE(j);
+  i = M1(j, k);
+  puts(M2(i, j));
+#undef SQR
+  i = SQR(j);
+#define SQR
+  i = SQR(j);
+  return 0;
+}
+
+After preprocessing:
+
+int main(void)
+{
+  int a[= 10], i, j, k, m; <- ERROR (N is "= 10", not "10")
+
+  i = j;
+
+  
+
+  i = 10 * j+1;
+  i = (x,y) x-y(j, k); <- ERROR this is illegal syntax - ) and x can't be in sequence
+  i = ((((x)*(x)))*(((x)*(x))));
+  i = (((x)*(x))*(x));
+  i = jk; <- ERROR there is no variable called jk
+  puts("i" "j"));
+
+  i = SQR(j); <- ERROR there is no function called SQR (fine, not a *compiler* error, but linker will crap out at this and final executable won't be produced usually)
+
+  i = (j); 
+  return 0;
+}

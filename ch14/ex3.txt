@@ -1,0 +1,8 @@
+#define DOUBLE(x) 2*x
+
+a) DOUBLE(1+2) = 2*1+2 = 4 (expected 6)
+b) 4/DOUBLE(2) = 4/2*2 = 4 (expected 1)
+
+Fix:
+
+#define DOUBLE(x) (2*(x))

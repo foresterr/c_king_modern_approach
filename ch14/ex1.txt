@@ -1,0 +1,14 @@
+a)
+#define CUBE(x) ((x) * (x))
+incompatible arguments would make it fail, but tbh not sure what is incompatible with multipl.
+Pointers, I suppose.
+also, omitting the argument (C99) would make it fail
+
+b)
+#define REM4(n) ((n) % 4)
+again, incompatible arguments - floating point numbers in this case in addition to pointers
+also, omitting the argument (C99)
+
+c)
+#define PRODLESS100(x,y) ((x) * (y) < 100 ? 1: 0)
+same as a), pretty much

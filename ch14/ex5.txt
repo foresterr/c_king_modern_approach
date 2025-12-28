@@ -1,0 +1,20 @@
+#define TOUPPER(c) ('a'<=(c)&&(c)<='z'?(c)-'a'+'A':(c))
+
+strcpy(s, "abcd");
+i = 0;
+putchar(TOUPPER(s[++i]));
+
+expands to putchar(('a'<=(s[++i])&&(s[++i])<='z'?(s[++i])-'a'+'A':(s[++i])))
+evaluates to putchar(('a'<=(s[1])&&(s[2])<='z'?(s[3])-'a'+'A':(s[3])))
+order of evaluation is well defined thanks to && short-circuiting and the fact that ternary
+does not evaluate unneded branch
+so it will print "D"
+
+
+strcpy(s, "0123");
+i = 0;
+putchar(TOUPPER(s[++i]));
+evaluation is the same, but it will print 2 (because second term of && won't evaluate, thanks to
+short-circuiting)
+
+

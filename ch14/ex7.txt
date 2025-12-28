@@ -1,0 +1,23 @@
+#define GENERIC_MAX(type)       \
+type type##_max(type x, type y) \
+{                               \
+  return x > y ? x : y;         \
+}
+
+a)
+long long_max(long x, long y)
+{
+  return x > y ? x : y;
+}
+
+b)
+it won't work for unsigned long because it has a space in the middle, so the function would look
+like this:
+unsigned long unsigned long_max(...
+
+c)
+taking the hint into account, I would say the way around is to define unsigned long as a new type
+so it does not include any spaces and use it when calling the macro
+
+typedef unsigned long unsigned_long;
+GENERIC_MAX(unsigned_long)

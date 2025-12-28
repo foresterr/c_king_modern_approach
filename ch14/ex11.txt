@@ -1,0 +1,1 @@
+#define ERROR(fs,i) fprintf(stderr, fs, i)

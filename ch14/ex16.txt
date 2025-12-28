@@ -1,0 +1,10 @@
+#define IDENT(x) PRAGMA(ident #x)
+#define PRAGMA(x) _Pragma(#x)
+
+IDENT(foo)
+expands to (stringization)
+PRAGMA(ident "foo")
+expands to (stringization again)
+_Pragma("ident \"foo\"")
+expands to (destringization)
+#pragma(ident "foo")

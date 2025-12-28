@@ -1,0 +1,8 @@
+#define M 10
+
+(a) #if M - true
+(b) #ifdef M - true
+(c) #ifndef M - false
+(d) #if defined(M) - true
+(e) #if !defined(M) - false
+

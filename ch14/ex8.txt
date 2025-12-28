@@ -1,0 +1,23 @@
+#define LINE_FILE "Line " #__LINE__ " of file " #__FILE__
+// that was the naive approach, but # can only be used in a parametrized macro for the arguments
+// ok, but macro parameters are defined by commas, so spaces should be fine
+
+#define QUOTE(t) #t
+#define LINE_FILE "Line " QUOTE(__LINE__) " of file " QUOTE(__FILE__)
+// well, that does not work either, QUOTE(__LINE__) just makes a string "__LINE__"
+
+OK, two things:
+__FILE__ produces a string literal. So it can be used easily, e.g. "File " __FILE__ will be joined
+by compiler into single string
+So the only problem is how to put __LINE__ (which is a number literal) into a string. # operator
+seems to be the way to go because it "stringifies", but it has the issue as above
+
+Q&A about CONCAT gives the answer - a macro like QUOTE(t) above won't expand the parameter preceded
+by #. But if we make another macro QUOTE2(t) that only calls QUOTE(t) with same parameter,
+it will work like this:
+
+QUOTE2(__LINE__) expands to QUOTE(<<actual line number>>)
+QUOTE(<<actual line number>>) expands to "stringified" actual line number
+
+Makes more sense to call QUOTE2 just QUOTE (as this is the one that will be used elsewhere) and
+QUOTE to something like QUOTE_INNER (which will be used only inside QUOTE)

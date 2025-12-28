@@ -1,0 +1,5 @@
+#define NELEMS(a) (sizeof(a) / sizeof(a[0]))
+
+Official answer recommends casting to int first
+
+#define NELEMS(a) ((int)sizeof(a) / sizeof(a[0]))

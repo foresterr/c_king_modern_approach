@@ -1,0 +1,10 @@
+- if the required logic is complex, or the macro will be used often, it will increase size of program
+  and also size of the compiled code
+- type of argument is important (macro arguments are not type checked)
+- "macro function" can't be used if a pointer to the function would be useful
+- if function is called in a way that causes side effects for arguments, then it's guaranteed side
+  effects will be evaluated once (at invocation). With "macro functions" there is no guarantee
+  (all depends on how many times the argument is expanded and evaluated inside the body of the 
+  macro) so generally calling macros with side-effect-causing arguments (like, decrements or increments)
+  is a bad idea
+
