@@ -1,0 +1,24 @@
+a)
+Output if DEBUG is defined:
+Value of i: 1
+Value of j: 2
+Value of k: 3
+Value of i + j: 3
+Value of 2 * i + j - k: 1
+
+b)
+Output if DEBUG is not defined:
+1
+2
+3
+3
+1
+
+c)
+Output is different because of conditional compilation - different version of PRINT_DEBUG
+gets left in the code by preprocessor and compiled depending on if DEBUG is set (also, a different
+version of main with different printf call)
+
+d)
+It is necessary because preprocessor processes the program line by line, so a #define does not
+define anything for the lines above it

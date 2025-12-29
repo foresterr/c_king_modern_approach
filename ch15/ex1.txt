@@ -1,0 +1,10 @@
+Other benefits:
+- limits single file size, which can make things that operates on file level (other than compiler -
+  code analysis tools, version control tools) perform faster
+- separate files can have separate responsible authors, mixing code ownership in one big file
+  is not likely to work well
+
+Disadvantages:
+- having to manage multiple files is another layer of complexity (with deeply nested dependencies,
+  this can be quite complex, e.g. "where the fuck does this function come from?")
+- refactoring between multiple files more painful than in a single file

@@ -1,0 +1,5 @@
+Function definitions should not be put into a header file.
+Why:
+- to avoid multiple object code for the same function which will confuse the linker
+  (but that could be avoided with guarding against multiple inclusion which is best pracice
+  anyway, so?)

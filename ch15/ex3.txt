@@ -1,0 +1,4 @@
+There can be a problem because system header can be "masked" by some custom local code.
+Also, it will confuse the reader who will expect the include to refer to local code.
+Question, are system code files even in the search path in ""? The path is "implementation
+dependent", so not necessarily, although according to the book they usually are.
