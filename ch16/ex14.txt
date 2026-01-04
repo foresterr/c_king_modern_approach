@@ -1,0 +1,35 @@
+a)
+int shape_area(struct shape s)
+{
+  switch (s.shape_kind) {
+    case RECTANGLE:
+      return s.u.rectangle.height * s.u.rectangle.width;
+      break;
+    case CIRCLE:
+      return (int) (3.14 * s.u.circle.radius * s.u.circle.radius);
+      break;
+  }
+}
+
+b)
+struct shape shape_move(struct shape s, int x, int y)
+{
+  s.center.x += x;
+  s.center.y += y;
+  return s;
+}
+
+c)
+struct shape shape_scale(struct shape s, double scale_factor)
+{
+  switch (s.shape_kind) {
+    case RECTANGLE:
+      s.u.rectangle.height = (int) (scale_factor * s.u.rectangle.height);
+      s.u.rectangle.width = (int) (scale_factor * s.u.rectangle.width);
+      break;
+    case CIRCLE:
+      s.u.circle = (int) (scale_factor * s.u.circle.radius);
+      break;
+  }
+  return s;
+}

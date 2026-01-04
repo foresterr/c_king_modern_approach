@@ -1,0 +1,32 @@
+a)
+int area(struct rectangle r)
+{
+  return (r.lower_right.x - r.upper_left.x) * (r.lower_right.y - r.upper_left.y);
+}
+
+b)
+struct point center(struct rectangle r)
+{
+  return (struct point) {
+    .x = (r.lower_right.x + r.upper_left.x) / 2,
+    .y = (r.lower_right.y + r.upper_left.y) / 2
+  }
+}
+
+c)
+struct rectangle move(struct rectangle r, int x, int y)
+{
+  r.upper_left.x += x;
+  r.upper_left.y += y;
+  r.lower_right.x += x;
+  r.lower_right.y += y;
+
+  return r;
+}
+
+d)
+bool is_inside(struct rectangle r, struct point p)
+{
+  return (   p.x >= r.upper_left.x && p.x <= r.lower_right.x 
+          && p.y >= r.upper_left.y && p.y <= r.lower_right.y);
+}

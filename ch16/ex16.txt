@@ -1,0 +1,8 @@
+a) True
+b) Not true (they are language constructs subject to scope, not something handled by preprocessor)
+   Note that enumeration constants ("members" of an enum) are simply available as identifiers in the 
+   enclosing scope - there is no need to refer to the enumeration tag or type name in any way
+   to use them.
+c) True
+d) Not true
+e) True

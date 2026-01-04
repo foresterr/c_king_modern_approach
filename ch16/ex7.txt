@@ -1,0 +1,51 @@
+a)
+struct fraction frac_reduce(struct fraction f)
+{
+  int m = f.numerator, n = f.denominator, temp;
+  while (n > 0) {
+    temp = n;
+    n = m % n;
+    m = temp;
+  }
+  return (struct fraction) {.numerator = f.numerator / m, .denominator = f.denominator / m};
+}
+
+b)
+struct fraction frac_add(struct fraction f1, struct fraction f2)
+{
+  struct fraction result = {
+    .numerator = f1.numerator * f2.denominator + f2.numerator * f1.denominator,
+    .denominator = f1.denominator * f2.denominator
+  };
+  return frac_reduce(result);
+}
+
+c)
+struct fraction frac_sub(struct fraction f1, struct fraction f2)
+{
+  struct fraction result = {
+    .numerator = f1.numerator * f2.denominator - f2.numerator * f1.denominator,
+    .denominator = f1.denominator * f2.denominator
+  };
+  return frac_reduce(result);
+}
+
+d)
+struct fraction frac_mul(struct fraction f1, struct fraction f2)
+{
+  struct fraction result = {
+    .numerator = f1.numerator * f2.numerator,
+    .denominator = f1.denominator * f2.denominator
+  };
+  return frac_reduce(result);
+}
+
+e)
+struct fraction frac_div(struct fraction f1, struct fraction f2)
+{
+  struct fraction result = {
+    .numerator = f1.numerator * f2.denominator,
+    .denominator = f1.denominator * f2.numerator
+  };
+  return frac_reduce(result);
+}

@@ -6,9 +6,9 @@ int gcd(int m, int n)
 {
   int temp;
   while (n > 0) {
-    swap = n;
+    temp = n;
     n = m % n;
-    m = s;
+    m = temp;
   }
   return m;
 }

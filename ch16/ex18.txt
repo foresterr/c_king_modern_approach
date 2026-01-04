@@ -1,0 +1,37 @@
+a)
+typedef enum {EMPTY, PAWN, KNIGHT, BISHOP, ROOK, QUEEN, KING} Piece;
+typedef enum {BLACK, WHITE} Color;
+
+b)
+typedef struct {
+  Piece piece;
+  Color color;
+} Square;
+
+c)
+Square board[8][8];
+
+d)
+Square board[8][8] = {
+  /* row 1 */
+  {
+    {ROOK, BLACK}, {KNIGHT, BLACK}, {BISHOP, BLACK}, {QUEEN, BLACK},
+    {KING, BLACK}, {BISHOP, BLACK}, {KNIGHT, BLACK}, {ROOK, BLACK}
+  },
+  /* row 2 */
+  {
+    {PAWN, BLACK}, {PAWN, BLACK}, {PAWN, BLACK}, {PAWN, BLACK}, 
+    {PAWN, BLACK}, {PAWN, BLACK}, {PAWN, BLACK}, {PAWN, BLACK},
+  },
+  /* rows 3 - 6 will be initialized with zeros, which is equivalent to {EMPTY, BLACK} */
+  /* row 7 */
+  [6] = {
+    {PAWN, WHITE}, {PAWN, WHITE}, {PAWN, WHITE}, {PAWN, WHITE}, 
+    {PAWN, WHITE}, {PAWN, WHITE}, {PAWN, WHITE}, {PAWN, WHITE},
+  },
+  /* row 8*/
+  {
+    {ROOK, WHITE}, {KNIGHT, WHITE}, {BISHOP, WHITE}, {QUEEN, WHITE},
+    {KING, WHITE}, {BISHOP, WHITE}, {KNIGHT, WHITE}, {ROOK, WHITE}
+  }
+}

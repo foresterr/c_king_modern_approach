@@ -1,0 +1,16 @@
+union {
+  double a;
+  struct {
+    char b[4];
+    double c;
+    int d;
+  } e;
+  char f[4];
+} u;
+
+Assuming no holes:
+double a would require 8 bytes
+struct e would require 8 bytes (double c is the largest possible member)
+char f[4] would require 4 bytes
+
+So, 8 bytes

@@ -1,0 +1,6 @@
+struct pinball_machine {
+  char[41] name; //not sure about 41, but 1 extra for null terminator sounds about right?
+  int year;
+  enum {EM, SS} type;
+  int players;
+};

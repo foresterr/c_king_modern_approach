@@ -1,0 +1,2 @@
+This is legal. Structures constitute namespaces - two different structures can have fields
+with same names and there is no conflict.

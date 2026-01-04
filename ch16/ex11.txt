@@ -1,0 +1,16 @@
+struct {
+  double a;
+  union {
+    char b[4];
+    double c;
+    int d;
+  } e;
+  char f[4];
+} s;
+
+assuming no holes:
+8 bytes for double a
+8 bytes for the union (double c is still the largest, char b[4] and int d will fit into 8 bytes too)
+4 bytes for char f[4]
+
+So, 20 bytes in total

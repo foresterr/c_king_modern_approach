@@ -1,0 +1,9 @@
+enum {FALSE, TRUE} b;
+int i;
+
+b = FALSE; legal
+b = i; legal and unsafe (can be something outside of enumerated values defined for b)
+b++; legal and unsafe (can be incremented to something outside of enumerated values for b)
+i = b; legal
+i = 2 * b + 1; legal - "meaningfulness" here eludes me, but it does not disagree what i is supposed
+to represent (just an integer)

@@ -1,6 +1,4 @@
-#ifndef STACK_H
-#define STACK_H
-
+#pragma once
 #include <stdbool.h>
 
 void make_empty(void);
@@ -11,4 +9,3 @@ char pop(void);
 void stack_overflow(void);
 void stack_underflow(void);
 
-#endif

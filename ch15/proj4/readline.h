@@ -1,6 +1,4 @@
-#ifndef READLINE_H
-#define READLINE_H
+#pragma once
 
 int read_line(char str[], int n);
 
-#endif
