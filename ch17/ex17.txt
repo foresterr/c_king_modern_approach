@@ -1,0 +1,6 @@
+qsort(&a[50], 50, sizeof(int), compare_func);
+
+/* note, sizeof(a[0]) would be better because less assumption (it's also the official solution)
+   although description specifically says it's an array of integers... on the other hand,
+   char or longint can also represent mathematical integers, so maybe it's a deliberate trap.
+*/

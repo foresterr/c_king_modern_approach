@@ -1,0 +1,11 @@
+variable x is const
+
+(a) If x is of type int, it can be used as the value of a case label in a switch statement.
+False, case labels must be constant expressions, not variables (even const variables)
+(b) The compiler will check that no assignment is made to x.
+True, assignment to const variable is not allowed (but initialization is, which confirms that
+initialization and assignment are different things)
+(c) x is subject to the same scope rules as variables.
+True - it _is_ a variable, just with an extra type qualifier
+(d) x can be of any type.
+True - again, just like a variable can be of any type

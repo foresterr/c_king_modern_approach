@@ -1,0 +1,8 @@
+void print_error(const char *message)
+{
+  int n = 1;
+  printf("Error %d: %s\n", n++, message);
+}
+
+To have intended behavior, it's sufficient to declare n as static:
+static int n = 1;

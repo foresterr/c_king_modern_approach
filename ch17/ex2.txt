@@ -1,0 +1,10 @@
+char *duplicate(char *str)
+{
+  char *p;
+
+  if ((p = malloc(strlen(str))) == NULL) {
+    return NULL;
+  }
+  strcpy(p, str);
+  return p;
+}

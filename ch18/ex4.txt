@@ -1,0 +1,4 @@
+It will be 0 when called for the first time, as j initialized to 0 (10*0).
+j is static, so it is initialized only once and it's value persists across function executions
+j is incremented once every time the function is called, so after it's been already called 5 times,
+f(10) will return 50 (10*5).

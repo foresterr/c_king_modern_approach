@@ -1,0 +1,49 @@
+char (*x[10])(int);
+x is:
+1. an array of size 10
+2. of pointers
+3. to functions with one int argument
+4. returning char
+
+int (*x(int))[5];
+x is:
+1. a function with one int argument
+2. returning a pointer
+3. to array of size 5
+4. containing ints
+That one was trickiest tbh. I know that int (*f)(int) declares pointer to function,
+but that int (*a)[10] similarly declares a pointer to array of 10 ints is a new one
+Hmm, but does it matter for anything except documentation? pointer to an array has no
+idea what is the size of it, so is this exactly the same as int (*a)[]?
+Ok, it does matter - if I try to make it point to an array of any other size or
+element type, it will be an error, so pointer to _an array_ has an idea what is the
+size of it. with array int a[10], a is the same as &a[0], which is a pointe:r to int,
+and _this one_ really doesn't have any idea about array size. I suppose &a is the pointer
+to int array of size 10. this is a difference regarding decay behavior between arrays and
+functions: array decays to pointer to its first element, function decays to pointer to itself.
+Also, I suppose int (*a)[] is a pointer to a VLA?
+OK, it isn't, pointer to a VLA is something like int (*a)[n] where n is a variable evaluated
+at runtime, same as for the VLA itself.
+Seems like int (*a)[] is a pointer to an array of whatever size... which actually seems useful to
+me? If I pass such pointer to a function, then function can establish array size via sizeof(*a),
+and iterate over array without having to pass size to the function separately?
+Fine, it does not work this way. sizeof(*ap) can't be used, because type of array with no
+specified size is incomplete (this is different from type of VLA - that one has variably modifiable
+type, not incomplete one) and sizeof can't be used on incomplete types (with one exception that I'm
+aware of so far - flexible array members).
+
+
+float *(*x(void))(int);
+x is:
+1. a function with no arguments
+2. returning a pointer
+3. to a function with one int argument
+4. returning a pointer to float
+
+void (*x(int, void (*y)(int)))(int);
+x is:
+1. a function with first argument that is an int, and second argument that is a pointer
+   to a function with one int argument that does not return anything
+2. returning a pointer
+3. to a function with one int argument
+4. that does not return anything

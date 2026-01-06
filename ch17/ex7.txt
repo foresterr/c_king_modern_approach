@@ -1,0 +1,17 @@
+for (p = first; p != NULL; p = p->next)
+  free(p);
+
+The problem is that p gets freed BEFORE for loop will execute "p = p->next"
+
+So we need another pointer variable (temp)
+
+p = first
+while (p != NULL) {
+  temp = p;
+  p = p->next;
+  free(temp);
+}
+
+This is the official solution, which leads me to believe that previous exercise CAN'T be answered
+to satisfaction; it is the same situation - we need to remember what we need to free somewhere to
+the side.

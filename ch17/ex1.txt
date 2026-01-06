@@ -1,0 +1,12 @@
+#include <stdlib.h>
+#include <stdio.h>
+
+void *my_malloc(size_t size)
+{
+  void *p;
+  if ((p = malloc(size)) == NULL) {
+    printf("Error: malloc failed");
+    exit(EXIT_FAILURE);
+  }
+  return p;
+}

@@ -1,0 +1,70 @@
+Original:
+struct node *insert_into_ordered_list(struct node *list,
+                                      struct node *new_node)
+{
+  struct node *cur = list, *prev = NULL;
+  while (cur->value <= new_node->value) {
+    prev = cur;
+    cur = cur->next;
+  }
+  prev->next = new_node;
+  new_node->next = cur;
+  return list;
+}
+
+Problems:
+- This will fail if list == NULL (empty list), as it will try to dereference cur while it's NULL
+- This will fail if new_node->value is less than list->value, as it will skip the loop and then
+  try to dereference prev while it's still NULL
+- This will fail if new_node->value is greater than all existing node values 
+  (it will set cur = cur->next on the last node, which will be NULL, and then try to dereference it
+  inside of the condition of the next loop iteration)
+
+Fixed, simple:
+struct node *insert_into_ordered_list(struct node *list, struct node *new_node)
+{
+  struct node *cur = list, *prev = NULL;
+  /* now the loop will stop with prev pointing to either:
+     - NULL, if list was NULL or new node value was less than first node value.
+       In both cases, new_node->next should be made to point at existing list (if it was NULL, then
+       it will insert a first node and put NULL in its next field), and function should return
+       new_node (as it's the new start of the list)
+     - non-null pointer to some node, in which case, this node's next field should point to new_node,
+       and new_node's next field should point to whatever this node next field was pointing to
+       (which can be NULL, in case new node value was greater than all values in list, and last node
+       was reached); function should return list
+  */
+  while (cur != NULL && cur->value <= new_node->value) {
+    prev = cur;
+    cur = cur->next;
+  }
+  new_node->next = cur;
+  if (prev == NULL) {
+    list = new_node;
+  } else {
+    prev->next = new_node;
+  }
+  return list;
+}
+
+Fixed using the concise technique from exercise 6:
+struct node *insert_into_ordered_list(struct node *list, struct node *new_node)
+{
+  struct node **pcur;
+  /* Similar to before - the loop will stop with either:
+     - pcur being location of list (if list is NULL or new node value was less than first value
+       in the list)
+     - pcur being location (in previous node) of pointer to current node, which is the first
+       node with value > new_node->value
+     - pcur being location of NULL in last node if no value > new_node->value was found
+
+     After that, it's enough to write content of pcur to new_node->next (this content will be NULL
+     if list was NULL or end of list was reached) and write new_node pointer to contents of pcur
+     (which will change the value of list if pcur was still location of list)
+  */
+  for (pcur = &list; *pcur != NULL && (*pcur)->value <= new_node->value; pcur = &(*pcur)->next)
+    ;
+  new_node->next = *pcur;
+  *pcur = new_node;
+  return list;
+}

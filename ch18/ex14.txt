@@ -1,0 +1,1 @@
+All variables can be initialized, so, "none of the above".

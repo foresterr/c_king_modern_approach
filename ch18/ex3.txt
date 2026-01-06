@@ -1,0 +1,13 @@
+extern float a;
+
+void f(register double b)
+{
+  static int c;
+  auto char d;
+}
+
+id   storage duration   scope    linkage
+a    static             file     unknown
+b    automatic          block    none
+c    static             block    none
+d    automatic          block    none

@@ -1,0 +1,13 @@
+x->a === (*x).a
+
+(&x)->a === (*(&x)).a === (*&x).a === x.a
+
+So, this is certainly true if x is a structure _variable_, but the exercise is a bit weasel-wordy
+on that point.
+
+If x is say, a structure type, then something like sizeof(x.a) seems to be valid syntax to me, but
+sizeof((&x)->a) certainly won't be.
+
+OK, checked - it won't be a valid syntax (because x is a type name, but x.a isn't). OK, so in all
+situations where x.a is valid syntax, (&x)->a is equivalent to it
+

@@ -1,0 +1,2 @@
+Storage duration. Specifically, variables with static storage duration are always initialized
+by default (usually to zero or something equivalent, like NULL for pointers).

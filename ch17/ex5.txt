@@ -1,0 +1,12 @@
+struct {
+  union {
+    char a, b;
+    int c;
+  } d;
+  int e[5];
+} f, *p = &f;
+
+p->b = ' '; illegal, b is member of the union, not the struct. p->d.b = ' ' would be ok
+p->e[3] = 10; legal
+(*p).d.a = '*'; legal (same as p->d.a = ...)
+p->d->c = 20; illegal, d is not a pointer so it can't be dereferenced with ->

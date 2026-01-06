@@ -1,0 +1,46 @@
+Original:
+struct node *delete_from_list(struct node *list, int n)
+{
+  struct node *cur, *prev;
+  for (cur = list, prev = NULL;
+      cur != NULL && cur->value != n;
+      prev = cur, cur = cur->next)
+    ;
+  if (cur == NULL)
+    return list;
+  if (prev == NULL)
+    list = list->next;
+  else
+    prev->next = cur->next;
+  free(cur);
+  return list;
+}
+
+Modified:
+void delete_from_list(struct node **list, int n)
+{
+  for (
+        struct node **pnode = list;
+        *pnode != NULL && (*pnode)->value != n;
+        pnode = &((*node)->next)
+      )
+    ;
+  /* Again: *pnode points to current node, but pnode is a location in PREVIOUS node (it's the
+     location of previous node's "next" field, or, initially, location of "free" pointer to first
+     list item which is not a member of any node). So we can both check the current node value 
+     and write something to the previous node "next" field without needing an extra variable.
+
+     *pnode will be NULL after the loop if list was NULL to start with, or last node 
+     with next == NULL was reached. In those cases there is nothing to delete.
+     If pnode and list are still pointing at the same location (which will be the case if node to
+     delete happens to be the first one) then modifying *pnode will also modify *list, satisfying
+     the requirement to modify first argument. If node to delete is not the first, then after the
+     loop finishes pnode will be different than list, and *list won't be modified (which is correct
+     - pointer to list head should not change in this case)
+  */
+  if (*pnode != NULL) {
+    struct node *temp = *pnode;
+    *pnode = (*pnode)->next;
+    free(temp);
+  }
+}

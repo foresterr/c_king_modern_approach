@@ -1,0 +1,32 @@
+Honestly, using type definitions is even more confusing to me than just trying to parse
+the declaration...
+
+(a) char (*x[10])(int);
+
+typedef char Func(int);
+typedef Func *Func_ptr;
+typedef Func_ptr Func_ptr_array[10];
+Func_ptr_array x;
+
+(b) int (*x(int))[5];
+
+typedef int *Int_array[10];
+typedef Int_array *Int_array_ptr;
+typedef Int_array_ptr Func(int);
+Func x;
+
+(c) float *(*x(void))(int);
+
+typedef float *Func(int);
+typedef Func *Func_ptr;
+typedef Func_ptr Func_ptr_func(void);
+Func_ptr_func x;
+
+(d) void (*x(int, void (*y)(int)))(int);
+
+typedef void ArgFunc(int);
+typedef ArgFunc *ArgFunc_ptr;
+typedef void Func(int);
+typedef Func *Func_ptr;
+typedef Func_ptr Func_ptr_func(int, ArgFunc_ptr);
+Func_ptr_func x;

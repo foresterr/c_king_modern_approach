@@ -1,0 +1,13 @@
+(a) char c = 65;
+Legal
+
+(b) static int i = 5, j = i * i;
+Legal for i, illegal for j. Static variable can't be initialized with non-constant expression
+
+(c) double d = 2 * PI;
+Legal, macro can be used as part of constant expression
+
+(d) double angles[] = {0, PI / 2, PI, 3 * PI / 2};
+Legal, initializer is present so the array does not need size specified, and the initializer
+consists of constant expressions only
+

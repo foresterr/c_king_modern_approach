@@ -1,0 +1,8 @@
+int count_occurences(struct node *list, int n) {
+  int count = 0;
+  for (struct node *node = list; node != NULL; node = node->next) {
+    if (node->value == n)
+      count++;
+  }
+  return count;
+}

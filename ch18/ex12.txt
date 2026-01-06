@@ -1,0 +1,14 @@
+int (*f(float (*)(long), char *))(double);
+
+f is a function with two arguments: first is a pointer to a function with one argument of type
+long, and returning float; second argument is pointer to char. f returns pointer to a function with
+one argument of type double, and returning int
+
+Example of how it could be called:
+
+float func(long n); /* it's defined somewhere else ;) */
+int i;
+char *c = "abc";
+double x = 1.0;
+
+i = (f(func, c))(x);

@@ -1,0 +1,24 @@
+/* functions can't return arrays */
+int f(int)[];
+
+/* now f is declared as function that returns pointer to array of int
+   this array should probably have size specified for the type to be complete */
+int (*f(int))[];
+
+/* however the exercise speaks about pointer to _first element in array_
+   so, simply a pointer to int*/
+int *f(int);
+
+/* functions can't return functions */
+int g(int)(int);
+
+/* now g is declared as function that returns pointer to a function
+   (with one int argument and returning int) */
+int (*g(int))(int)
+
+/* array elements can't be functions */
+int a[10](int);
+
+/* now a is declared as array of pointers to functions
+   (with one int argument and returning int) */
+int (*a[10])(int)

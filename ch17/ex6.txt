@@ -1,0 +1,109 @@
+Original:
+
+struct node *delete_from_list(struct node *list, int n)
+{
+  struct node *cur, *prev;
+  for (cur = list, prev = NULL;
+      cur != NULL && cur->value != n;
+      prev = cur, cur = cur->next)
+    ;
+  if (cur == NULL)
+    return list;
+  if (prev == NULL)
+    list = list->next;
+  else
+    prev->next = cur->next;
+  free(cur);
+  return list;
+}
+
+Modified:
+
+struct node *delete_from_list(struct node *list, int n)
+{
+  // special case: empty list
+  if (list == NULL)
+    return list;
+
+  struct node *node = list;
+  // special case: found value == n in first node
+  if (node->value == n) { 
+    list = node->next;
+    free(node);
+    return list;
+  }
+
+  // can't look behind with only one pointer variable, but can look ahead
+  for (; node->next != NULL && node->next->value != n; node = node->next)
+    ;
+  if (node->next == NULL)
+    return list;
+
+  // ... and we're stuck because after assigning something new to node->next old *(node->next) is
+  // garbage and cannot be freed (have to keep pointer to it SOMEWHERE - another variable - to
+  // be able to free it). also cannot free node->next before getting node->next->next out of it
+
+  struct node *deleted_node = node->next;
+  node->next = node->next->next;
+  free(deleted_node);
+
+  return list;
+}
+
+Some notes after an internet trawl:
+https://stackoverflow.com/questions/24898748/c-function-delete-node-from-singly-linked-list-using-only-one-local-pointer-var
+
+Some tricks from that link to solve as stated:
+- Use recursion - don't iterate, call delete_from_list recursively 
+  (node->next = delete_from_list(node->next)) after checking for the first 2 special cases as
+  terminating conditions. Eventually it will either reach the end of list, or element to delete
+  will be first in the remainder of list, and recursive calls will unwrap.
+- Use extra function (e.g. wrap free() in custom funtion that returns the pointer from next).
+  That function will need its own variable to hold value of next from node being deleted, so this
+  "trick" is just kicking the can down the road and pretending it disappeared.
+- After finding the node to delete, copy node->next->next to node->next (need to take care of
+  value too), repeat until reaching end of the list, and finally free() the last list element.
+  That's moving a lot of data around.
+
+All those tricks (other than the custom function, which is a cop-out) lead to less efficient 
+code, and in some cases (recursion) do not even save any memory space compared to just using
+one extra variable, so I'm not too sure what was supposed to be the intended solution.
+If any of this clever fuckery was really supposed to be involved, this exercise should have
+been starred.
+
+Note, there is an interesting comment there about using another level of indirection to simplify code
+
+struct node *delete_from_list(struct node *list, int n)
+{
+  struct node **pnode;
+  // this simplification works for 2 reasons:
+  // 1. pnode can be safely dereferenced even if list or next itself is NULL
+  // 2. extra level of indirection has more information, compared to single pointer:
+  // - *pnode - pointer to current node. So far, same as before.
+  // - pnode - where pointer to the current node is *located* - this is the extra information,
+  //   and crucially, if this pointer to current node is located in previous node, 
+  //   then by writing to this location, we are modifying previous node
+  // So, by iterating over pnode instead of node, we can both check value of current node 
+  // (by dereferencing *pnode), as well as overwrite "next" in previous node
+  // (by writing node/next to *pnode)
+  //
+  // For the first iteration, pnode is not a location in any node, but can still be handled
+  // the same way - this eliminates "special cases" (e.g. can't use node->next->value construct
+  // to check value in first node so it needs special handling, but with (*pnode)->value there is
+  // no such problem)
+
+  for (pnode = &list; *pnode != NULL && (*pnode)->value != n; pnode = &(*pnode)->next)
+    ;
+
+  // *pnode can be NULL in two cases: list was NULL, or last item (with next == NULL) was reached
+  // in both those cases there is nothing to delete
+  if (*pnode != NULL) {
+    // saving the pointer to next node with value == n
+    struct node *deleted_node = *pnode;
+    // this is equivalent of "next (in previous) = next (from current)"
+    *pnode = (*pnode)->next;
+    free(deleted_node);
+  }
+
+  return list;
+}

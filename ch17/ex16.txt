@@ -1,0 +1,30 @@
+int sum(int (*f)(int), int start, int end)
+{
+  /* Don't like returning 0 if start > end, but what should one do? EXIT_FAILURE?
+     Return some "magic" value indicating error? (there is no such thing as integer NaN)
+     I suppose there is no single generally "right" answer here, if it can be assumed start
+     and end can't be negative that function is perfectly fine.
+
+     Some extra: (*f)(int arg) in function argument lists or in expression is exactly the same as
+     f(arg) because f "decays" into pointer in those situations (like arrays do).
+     But in declarations it's not so:
+     void (*f)(int); declares a pointer to function with no output and one int arg
+     void g(int); declares a function with the same signature as f
+
+     It's really like it is for arrays:
+     int *a; declares pointer to int
+     int b[10]; declares array of 10 ints,
+     But when b is used in expression or function argument list, it decays to a pointer - which
+     can be subscripted, so really the only readily apparent differences are that sizeof(b) gives
+     size of whole array, but sizeof(a) gives size of a pointer, and that it's not possible to
+     assign anything to b. This is in fact also similar for functions: sizeof(f) gives pointer
+     size, and sizeof(g) would maybe give size of the function itself, except that using sizeof
+     on functions is forbidden / undefined behavior :P It's also not possible to assign anything
+     to g
+  */
+  int result = 0;
+  for (; start <= end; start++) {
+    result += (*f)(start);
+  }
+  return result;
+}

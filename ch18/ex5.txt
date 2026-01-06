@@ -1,0 +1,19 @@
+(a) Every variable with static storage duration has file scope.
+False, block scoped variables can be static (available only inside this block, but persist across
+multiple block executions)
+
+(b) Every variable declared inside a function has no linkage.
+False. Variable which is declared inside a function as extern has unknown linkage; it can be
+external (usually - when it's declared in another file) or internal (if it's declared elsewhere
+in the same file with internal linkage), or have no linkage (if it's declared in the same file
+with no linkage)
+
+(c) Every variable with internal linkage has static storage duration.
+True. To have internal linkage, variable must have file scope and be declared static, or
+be declared extern (in which case linkage is unknown, but all extern variables have static storage
+duration anyway)
+
+(d) Every parameter has block scope.
+True. Function parameters have the same properties as auto variables, which means block scope. Also
+it's logical, parameters for a function are only accessible from inside of the function (which
+constitutes a block)
