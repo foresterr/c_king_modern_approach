@@ -6,3 +6,4 @@
 !*.txt
 !*.sh
 !makefile
+!quote
