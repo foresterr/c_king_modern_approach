@@ -8,11 +8,38 @@ integer. f returns a pointer to a function that has no arguments and returns not
 
 void (*f(struct t *p, long int n))(void)
 
+Hmm. Official answer skips some parentheses: 
+void *f(struct t *p, long int n)(void);
+But this gives me a compiler error while my version checks out OK:
+function cannot return function type 'void *(void)'
+I'm using clang for syntax checking, but it should be compatible with how gcc does things.
+Not sure if this means something changed in C in the meantime, but I have clang set to check
+with C99 standard, so I don't think so.
+
+Anyway, declaring anything with pointers to functions is a bit of a breach of the
+"declaration follows use" principle, because of the fact that function pointers can be called
+directly, without dereferencing (in fact, "naked" function names virtually always decay to pointer
+to function when used in code).
+
+So if we declare a function like this:
+void (*f(void))(void);
+then we can call it like this:
+f()();
+The "*" from declaration is nowhere to be seen.
+
+Of course, we can also call it like this:
+(*f())() (then usage and declaration have the same form)
+or even
+(*(*f)())()
+which all do exactly the same thing
+
 (c) a is an array of four pointers to functions that have no arguments and return nothing.
 The elements of a initially point to functions named insert, search, update, and
 print.
 
 void (*a[4])(void) = {insert, search, update, print};
+Size of array is not necessary here (and not present in official answer) because it's specified
+by initializer (if there is a mismatch, size specified in brackets has precedence)
 
 (d) b is an array of 10 pointers to functions with two int arguments that return structures
 with tag t.

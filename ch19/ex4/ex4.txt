@@ -1,0 +1,3 @@
+OK, so this exercise is about creating a non-abstract data type, and stack.h for array
+implementation should be the same one as first stack.h in 19.3. For some reason it was
+confusing.

@@ -2,7 +2,7 @@ char *duplicate(char *str)
 {
   char *p;
 
-  if ((p = malloc(strlen(str))) == NULL) {
+  if ((p = malloc(strlen(str) + 1)) == NULL) {
     return NULL;
   }
   strcpy(p, str);

@@ -10,7 +10,7 @@ x is:
 1. a function with one int argument
 2. returning a pointer
 3. to array of size 5
-4. containing ints
+4. containing integers
 That one was trickiest tbh. I know that int (*f)(int) declares pointer to function,
 but that int (*a)[10] similarly declares a pointer to array of 10 ints is a new one
 Hmm, but does it matter for anything except documentation? pointer to an array has no

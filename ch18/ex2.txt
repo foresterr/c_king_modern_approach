@@ -1,3 +1,4 @@
 a) extern
 b) static
-c) auto, static
+c) auto (the default), extern, static
+/* I missed the fact that extern used on block scoped variable makes it storage duration static */
