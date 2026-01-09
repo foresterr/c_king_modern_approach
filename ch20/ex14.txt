@@ -1,0 +1,7 @@
+struct float_s {
+  unsigned int frac: 23;
+  unsigned int exp:   8;
+  unsigned int sign:  1;
+};
+
+//TODO: come back here after the project

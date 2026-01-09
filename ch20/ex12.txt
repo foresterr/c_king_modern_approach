@@ -1,0 +1,10 @@
+unsigned short create_short(unsigned char high_byte, unsigned char low_byte)
+{
+  return high_byte << 8 + low_byte;
+}
+
+Bit-shifting high_byte by 8 effectively removes all bits from it replacing them with zeros.
+To fix, cast both byte values to short before adding (note, if the high byte value is properly shifted,
+then ORing would work just as well as adding)
+
+return (short) high_byte << 8 + (short) low_byte;

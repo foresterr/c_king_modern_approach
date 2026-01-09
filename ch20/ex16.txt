@@ -1,0 +1,23 @@
+This is the original regs union:
+union {
+  struct {
+    WORD ax, bx, cx, dx;
+  } word;
+  struct {
+    BYTE al, ah, bl, bh, cl, ch, dl, dh;
+  } byte;
+} regs
+
+This is the modification (little endian means that the least significant byte comes first... funny
+thing, it should be called little-startian or something :P )
+union {
+  struct {
+    DWORD eax, ebx, ecx, edx;
+  } dword;
+  struct {
+    WORD ax, x_a, bx, x_b, cx, x_c, dx, x_d;
+  } word;
+  struct {
+    BYTE al, ah, x_a1, x_a2, bl, bh, x_b1, x_b2, cl, ch, x_c1, x_c2, dl, dh, x_d1, x_d2;
+  } byte;
+} regs

@@ -1,0 +1,17 @@
+#define M(x,y) ((x)^=(y),(y)^=(x),(x)^=(y))
+
+M(x,y) swaps the values of x and y - it's the "XOR swap" trick (more of a trick than technique,
+because apparently it's not very practical even if it saves some space on temporary variable)
+
+As to why it works:
+1. XOR is associative (all bitwise operations are): (x^y)^z == x^(y^z)
+2. Result of XORing something with itself is always 0: x ^ x == 0
+3. Result of XORing something with 0 is always the same something: x ^ 0 == x
+
+So the result of compound assignments in this macro are:
+first: x^y == y^x (XOR is also commutative), stored in x
+second: y^y^x == 0^x == x, stored in y
+third: y^x^x == y^0 == y, stored in x
+
+However, if we call it like M(x,x) (or with two pointers that point to the same location)
+it will just set x variable to 0.

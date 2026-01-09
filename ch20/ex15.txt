@@ -1,0 +1,4 @@
+Using int for bit field is ambiguous. Compiler can either treat the first bit as sign bit (in which
+case the statement will produce -1), or as part of the number (in which case it will produce 1)
+
+The way to avoid this problem is to define flag field to be an unsigned int.

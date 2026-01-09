@@ -1,0 +1,25 @@
+(a) i = 8; j = 9;
+printf("%d", i >> 1 + j >> 1);
+
+Shifted 8 is 4, and shifted 9 is also 4 (rightmost 1 bit goes bye bye)
+So it will print "8"
+
+(b) i = 1;
+printf("%d", i & ~i);
+
+Will print "0"
+This is basic boolean logic laws as applied to bits - a and not a is always false
+
+(c) i = 2; j = 1; k = 0;
+printf("%d", ~i & j ^ k);
+
+Operator precedence (except for the unary ~which is first of course): AND first, then XOR.
+But XOR is with k == 0 so we can forget about it right away.
+AND with j == 1 can be only 1 or 0; ~2 (~...010 == ...101) has 1 in the rightmost bit, so the
+printed result will be "1"
+
+(d) i = 7; j = 8; k = 9;
+printf("%d", i ^ j & k);
+
+j & k == 8  (8 is ...01000, 9 is ...01001)
+i ^ 8 == 15 (7 is ...00111, so XOR with 8 gives ...01111)

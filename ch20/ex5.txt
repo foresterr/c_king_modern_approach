@@ -1,0 +1,3 @@
+#DEFINE GET_RED(c) ((BYTE)((c) & (long) 0xFF))
+#DEFINE GET_GREEN(c) ((BYTE)(((c) & (long) 0xFF << 8)) >> 8)
+#DEFINE GET_BLUE(c) ((BYTE)(((c) & (long) 0xFF << 16)) >> 16)

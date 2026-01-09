@@ -1,0 +1,15 @@
+#define SHIFT_BIT 1
+#define CTRL_BIT  2
+#define ALT_BIT   4
+
+if (key_code & (SHIFT_BIT | CTRL_BIT | ALT_BIT) == 0)
+  printf("No modifier keys pressed\n");
+
+Bitwise & has lower precedence than ==, so the result of OR in parentheses is compared to 0
+(it's never 0, as it's always ...0111 in bits), and then key_code & 0 (boolean false is 0) is
+always 0, so the if condition is never true.
+
+To fix it just add one more pair of parentheses:
+
+if ((key_code & (SHIFT_BIT | CTRL_BIT | ALT_BIT)) == 0)
+  printf("No modifier keys pressed\n");

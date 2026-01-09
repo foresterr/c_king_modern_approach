@@ -1,0 +1,11 @@
+n &= n - 1;
+
+15:     1111
+14:     1110
+result: 1110
+13:     1101
+result: 1100
+
+This statement sets the least significant 1 bit to 0 (because subtracting 1 from a binary number
+changes the least significant 1 digit (d) to 0, and all 0 digits to the right of d to 1 - so the
+result of AND for both d and all bits to the right of d will be 0)

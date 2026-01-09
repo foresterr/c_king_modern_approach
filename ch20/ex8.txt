@@ -1,0 +1,12 @@
+unsigned int f(unsigned int i, int m, int n)
+{
+  return (i >> (m + 1 - n)) & ~(~0 << n);
+}
+
+a) ~(~0 << n) is a value with 1s in n rightmost positions (~0: all 1s, << n: all ones
+except in n rightmost positions (because they get filled with 0s), ~: all 0s except in n rightmost
+positions
+
+b) this function returns value with n bits starting from mth bit of i in n rightmost bits,
+and sets all other bits to 0. Or, in other words, it extracts a bit "subfield" starting at
+bit m and with n bits, and returns it right-aligned.

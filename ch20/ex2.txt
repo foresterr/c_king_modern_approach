@@ -1,0 +1,11 @@
+i is the variable, j is the bit number (zero based)
+
+Hmm.
+XOR with 0 does nothing and XOR with 1 is the same as ~ (flip)
+
+i ^ (1 << j)
+
+So we have a complete set now:
+i |= (1 << j) /* switch on */
+i &= ~(1 << j) /* switch off */
+i ^= (1 << j) /* toggle */
