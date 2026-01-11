@@ -1,0 +1,8 @@
+Ugh, this was harder than it looked (for example, the "usually masked" getchar() isn't anymore),
+but I found some examples in /usr/include/wchar.h.
+
+E.g. there is a function:
+extern int vwscanf(...)
+
+and some lines below its declaration:
+#    define vwscanf __isoc23_vwscanf

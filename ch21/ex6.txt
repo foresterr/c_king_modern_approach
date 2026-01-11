@@ -1,0 +1,34 @@
+a) They begin with underscore because they are reserved identifiers. "Bit" macros like _UPPER
+begin with underscore and a capital letter, so they are fully reserved (no such identifiers should
+ever be used outside of standard library). _ctype begins with underscore but not followed by
+uppercase letter, so it could be used inside a programmer-defined function without breaching
+the standard.
+
+b) _ctype array will contain (at indexes corresponding to individual char variables) bit fields (in
+the form of char values), that encode what the character is. We have 8 bits that can be used, so we
+can encode 8 character properties in them.
+
+char 9 (horizontal tab) will have those bits:
+10101000 = 168
+blank: yes, hex digit: no, whitespace: yes, punctuation: no,
+control: yes, digit: no, lowercase: no, uppercase no
+
+char 32 (space):
+10100000 = 160
+blank: yes, hex digit: no, whitespace: yes, punctuation: no,
+control: no, digit: no, lowercase: no, uppercase no
+
+char 65 (A):
+01000001 = 65
+blank: no, hex digit: yes, whitespace: no, punctuation: no,
+control: no, digit: no, lowercase: no, uppercase yes
+
+char 94 (^):
+00010000 = 16
+blank: no, hex digit: no, whitespace: no, punctuation: yes,
+control: no, digit: no, lowercase: no, uppercase no
+
+c) Getting a value from an array and ANDing it with a constant value is presumably faster than
+a "proper" function call and doing some logic inside of the function. Also, the array can be
+indexed directly with the char that's being checked, which minimizes number of necessary
+operations to "get to the point"

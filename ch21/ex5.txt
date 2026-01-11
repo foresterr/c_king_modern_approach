@@ -1,0 +1,4 @@
+#define islower(c) ((c) >= 'a' && (c) <= 'z')
+
+This parametrized macro does not conform to standard, because it evaluates the argument more than
+once (which can have unexpected results if evaluation causes side effects)

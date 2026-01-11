@@ -1,0 +1,4 @@
+Macro needs to come after the function prototype, because if it was defined before, preprocessor
+would mess with the function prototype before compiler had a chance to see it. E.g. if macro masking
+changes one function to another, having the macro first would result in the same function being
+declared twice.

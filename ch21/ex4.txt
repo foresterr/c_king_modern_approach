@@ -1,0 +1,48 @@
+Generally, all of them are defined to be reserved for a specific header ("may be added to
+declarations in <someheader.h>"), and the very first sentence in that section is "All external
+names described below are reserved no matter what headers are included by the program". Based on
+what external identifier is (has external linkage - only objects like functions or variables have
+linkage, so a macro or a typedef is not an "external identifier"), if function names are reserved,
+then they are reserved no matter what headers are included. If macro names or typedef names are
+reserved, they are only reserved if the header that defines them is included.
+
+So, if the list says "functions", they are reserved even if header is not used. If it says "macros"
+or "typedef names", they are reserved if relevant header is included:
+complex.h
+functions with names cerf, cerfc, cexp2, cexpm1, clog10, clog1p, clog2, clgamma, ctgamma
+and their variants with "l" or "f" suffix
+
+ctype.h
+functions beginning with is or to followed by a lowercase letter
+
+errno.h
+macros starting with E followed a number, or by an uppercase letter
+
+inttypes.h
+macros starting with PRI or SCN, followed by a lowercase letter or X
+
+locale.h
+macros starting with LC_ followed by an uppercase letter
+
+signal.h
+macros starting with SIG or SIG_ and followed by an uppercase letter
+
+stdbool.h
+macros bool, true and false - being able to redefine them is an 'obsolescent feature'.
+So not in breach of standard yet to redefine them, but please stop doing so
+
+stdint.h
+typedef names starting with int or uint, and ending with _t
+macros starting with INT or UINT and ending with _MAX, _MIN or _C
+
+stdlib.h
+functions starting with str followed by lowercase letter
+
+string.h
+functions starting with str, mem or wcs followed by lowercase letter
+
+wchar.h
+functions starting with wcs followed by a lowercase letter
+
+wctype.h
+functions beginning with is or to followed by a lowercase letter (same as ctype.h)

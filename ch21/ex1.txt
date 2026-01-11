@@ -1,0 +1,27 @@
+This is on Linux (Ubuntu 24.04 LTS), running in WSL2
+The headers don't sit in just one location.
+
+GCC <...> search paths can be found with "cpp -v" (cpp is C preprocessor, -v means "verbose"):
+ /usr/lib/gcc/x86_64-linux-gnu/13/include
+ /us/usr/lib/gcc/x86_64-linux-gnu/13/includer/local/include
+ /usr/include/x86_64-linux-gnu
+ /usr/include
+
+Standard C99 headers in /usr/lib/gcc/x86_64-linux-gnu/13/include :
+float.h, iso646.h, limits.h, stdarg.h, stdbool.h, stddef.h, stdint.h
+
+Clang <...> search paths can be found with "clang -E -x c -v -" (-E means "run preprocessor only",
+-x c specifies C as language, -v means "verbose". Single "-" is in place of file name means to take
+program source from stdin; without it clang wouldn't go into processing far enough to print the
+info that is of interest here):
+ /usr/lib/llvm-18/lib/clang/18/include
+ /usr/local/include
+ /usr/include/x86_64-linux-gnu
+ /usr/include
+
+Standard C99 headers in /usr/lib/llvm-18/lib/clang/18/include :
+float.h, inttypes.h, iso646.h, limits.h, stdarg.h, stdbool.h, stddef.h, stdint.h, tgmath.h
+
+The remainder is in /usr/include. Some are in both places, in which case I suppose the ones in
+compiler-specific include folder take precedence (does not matter for gcc, as files present in
+both locations are identical anyway)
