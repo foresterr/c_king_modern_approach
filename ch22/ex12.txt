@@ -1,0 +1,30 @@
+Original:
+int count_periods(const char *filename)
+{
+  FILE *fp;
+  int n = 0;
+  if ((fp = fopen(filename, "r")) != NULL) {
+    while (fgetc(fp) != EOF)
+      if (fgetc(fp) == '.')
+        n++;
+    fclose(fp);
+  }
+  return n;
+}
+
+There are 2 calls of fgetc in every loop iteration, so only every second one will be checked for
+being '.'
+To fix, assign the result of fgetc in loop condition to a variable and check against that.
+
+int count_periods(const char *filename)
+{
+  FILE *fp;
+  int n = 0, ch;
+  if ((fp = fopen(filename, "r")) != NULL) {
+    while ((ch = fgetc(fp)) != EOF)
+      if (ch == '.')
+        n++;
+    fclose(fp);
+  }
+  return n;
+}

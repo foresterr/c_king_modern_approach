@@ -1,0 +1,7 @@
+while (ch = getc(source_fp) != EOF)
+  putc(ch, dest_fp);
+
+Program will compile (although the compiler might issue a warning).
+With a while loop like this, comparison would run first, and the result (true, meaning 1) will get
+stored in ch at every loop iteration, and then written to dest_fp. So dest_fp will be a file full
+of '\1's (start of header, one of control characters) with the same size as source_fp.

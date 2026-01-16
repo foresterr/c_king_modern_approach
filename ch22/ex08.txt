@@ -1,0 +1,6 @@
+" %c" scans a single character after any amount of whitespace, and writes only that single character
+to the target (so the target can be a char array, or a pointer to char variable)
+
+"%1s" scans a string of length 1 (one character) after any amount of whitespaces. It will write that
+single character to the target, and then a '\0' after it (so if we try to write to a pointer to a
+char variable and not an array, presumably terrible things will happen)

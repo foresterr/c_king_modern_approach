@@ -1,0 +1,6 @@
+fseek(fp, 64L * n, SEEK_SET);
+/* assuming "end of file" means that a read at this position would return EOF
+   so it's after the last byte, not at the last byte */
+fseek(fp, -64L, SEEK_END);
+fseek(fp, 64L, SEEK_CUR);
+fseek(fp, -128L, SEEK_CUR);

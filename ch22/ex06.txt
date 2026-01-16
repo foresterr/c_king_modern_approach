@@ -1,0 +1,4 @@
+printf(widget == 1 ? "%d widget\n" : "%d widgets\n", widget);
+
+This would also work and has less repetition:
+printf("%d widget%s\n", widget, widget == 1 ? "" : "s");

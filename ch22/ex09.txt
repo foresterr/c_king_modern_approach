@@ -1,0 +1,1 @@
+getch() - there is no such function in standard library

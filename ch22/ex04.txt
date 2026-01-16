@@ -1,0 +1,21 @@
+%#012.5g meaning:
+# flag - always print decimal point (for floating point numbers, which "g" implies)
+0 flag - pad number with 0s up to field width
+12 - minimum field width
+.5 - precision, for "g" means "number of significant digits"
+
+83.7361
+00000083.736
+
+29748.6607
+00000029749.
+(# forces the decimal point, but nothing says any numbers need to follow...)
+
+1054932234.0
+001.0549e+09
+(I'm not that familiar with e notation, but it seems that it always has only 1 significant
+digit before the decimal point, and the exponent always has at least 2 digits, and is always
+preceded by + or -)
+
+0.0000235218
+002.3522e-05

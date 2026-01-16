@@ -1,0 +1,6 @@
+It's the same in most cases, the difference is that the sign (if present) counts as one of the
+characters that need to fit into minimum field width, precision specifies minimum number of digits,
+not characters.
+
+So -1 printed with %04d will be -001 - that's 4 characters total.
+But -1 printed with %.4d is -0001 - that's 4 digits (the sign is not a digit)

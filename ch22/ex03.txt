@@ -1,0 +1,8 @@
+This code will execute fclose(fp) even if fp in NULL, and argument to fclose must be valid pointer
+obtained from call of fopen or freopen.
+
+To fix, either:
+1. Add an else clause existing if which will terminate the program when it was not possible to
+open the file (fp == NULL)
+2. Move the fclose(fp) call inside of the if block - then it will be called only if file was opened
+OK and fp is a valid pointer to file
