@@ -1,0 +1,20 @@
+(a) Moving all elements of an array “down” one position in order to leave room for a new
+element in position 0.
+
+memmove - we are copying the data into an overlapping memory area.
+
+(b) Deleting the first character in a null-terminated string by moving all other characters
+back one position.
+
+Tricky. We are copying into an overlapping memory area, so strcpy and strncpy should not be used.
+So memmove again.
+
+(c) Copying a string into a character array that may not be large enough to hold it. If the
+array is too small, assume that the string is to be truncated; no null character is neces-
+sary at the end.
+
+strncpy (can limit number of characters, not guaranteed to write null terminator)
+
+(d) Copying the contents of one array variable into another.
+
+memcpy - memory areas don't overlap

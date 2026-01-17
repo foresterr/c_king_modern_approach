@@ -1,0 +1,30 @@
+This is a surprisingly tricky subject.
+
+Both gcc and clang have an option, -ffp-contract=?
+In addition, gcc does not suport standard pragma (STDC FP_CONTRACT, or any other standard pragmas
+for that matter) to control contraction, but clang does (and gcc probably never will, if it still
+does not in 2026).
+
+Now, for the compiler setting. It can be set to off, fast or on.
+
+"off" is off (ignores the standard pragma if it tries to turn it on).
+
+"fast" is more or less "on wherever possible", which is for some reason standard-noncompliant. Seems
+like standards allow contraction only inside one statement, but not across statements (e.g. x = a*b+c;
+is a legit place to use contraction, but x = a*b; x += c; is not), and "fast" does contraction even
+across statements where possible. Fast also ignores standard pragma; it's a "hard on" setting.
+
+"on" is "on in a standards compliant way, respect standard pragmas". that works for clang, but in gcc
+this setting is functionally equivalent to "off" (!), probably because it's impossible to turn it on
+in a standards-compliant way.
+
+clang has one additional option, "fast-honor-pragmas", which works as expected (use fast behavior -
+contracting even across statements - but honor the use of standard pragma to toggle contraction on
+or off)
+
+Default for gcc is "fast", unless ISO standard compliant mode is specified (e.g. -std=c99 but not
+-std=gnu99) in which case it's "off"; default for clang is "on".
+
+And, to reiterate, fma() ignores all that and uses contraction if at all possible (I suppose that
+function will still be defined for hardware target that can't do contraction, in which case it does
+things the normal way with no speed advantage)

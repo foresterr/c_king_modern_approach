@@ -1,0 +1,5 @@
+Original:
+if (ch == 'a' || ch == 'b' || ch == 'c') ...
+
+Replacement:
+if (strchr("abc...", ch) != NULL) /* could also skip comparison as NULL counts as false */

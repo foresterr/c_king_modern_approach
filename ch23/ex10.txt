@@ -1,0 +1,9 @@
+Original:
+if (strcmp(str, "foo") == 0 || strcmp(str, "bar") == 0 || strcmp(str, "baz") == 0) ...
+
+Modified:
+if (strstr("foo\1bar\1baz", str) != NULL)
+
+It does assume that the separator character does not occur in string being searched for (e.g.
+"foo\1b" would get a match), and also that str cannot be a substring of one of the strings being
+searched for (e.g. "oo" would also get a match)

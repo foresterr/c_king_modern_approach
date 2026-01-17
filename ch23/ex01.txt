@@ -1,0 +1,12 @@
+Original:
+double round_nearest(double x)
+{
+  return x < 0.0 ? ceil(x - 0.5) : floor(x + 0.5);
+}
+
+Extended:
+double round_nearest(double x, double n)
+{
+  double p10 = pow(x,n);
+  return (x < 0.0 ? ceil(x * p10 - 0.5) : floor(x * p10 + 0.5)) / p10;
+}
