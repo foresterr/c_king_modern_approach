@@ -1,0 +1,11 @@
+Hmm. Assert always terminates the program, so it's a good troubleshooting tool for stuff that should
+be fixed (fail early and loudly) an debugging (it's telling that asserts can be turned off by the NDEBUG
+macro). In case of problems that are beyond the control of the program, it's a given that they will
+happen at least sometimes "in the wild" and then it's probably better to try to handle them in
+a way that does not cause termination, but instead lets the program recover if at all possible and
+finish doing what it was intended to do.
+
+Examples of problems beyond control of the program:
+- Bad user input
+- Differences in the environment
+- Interference from other programs or the operating system
