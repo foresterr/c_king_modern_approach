@@ -1,0 +1,12 @@
+There are only 3 locales on the system out of the box (Ubuntu WSL 24.04):
+- C
+- C.UTF-8
+- POSIX
+
+Effectively, there are 2 as POSIX is supposed to be the same as C. Default is C.UTF-8.
+
+Locales supported by the system (and, presumably, by the compilers such as gcc and clang) are
+listed in /usr/share/i18n/SUPPORTED
+
+They can be installed by calling "locale-gen <<locale name>>"" and then "update-locale".
+For a test, I installed pl_PL and pl_PL.UTF-8 locales in this way.

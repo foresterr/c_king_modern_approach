@@ -1,0 +1,23 @@
+Côte d'Azur
+"C\xC3\xB4te d'Azur"
+
+crème brûlée
+"cr\xC3\xA8me br\xC3\xBBl\xC3A9e"
+
+crème fraîche
+"cr\xC3\xA8me fra\xC3\xAEche"
+
+Fahrvergnügen
+"Fahrvergn\xC3\xBCgen"
+
+tête-à-tête
+"t\xC3\xAAte-\xC3\xA0-t\xC3\xAAte"
+
+All Latin-1 characters that are 2-byte UTF-8 ones have C2 or C3 as their first byte.
+
+Regarding UTF-8, C11 introduced new type of string literal, an UTF-8 string, which is presumably
+valid UTF-8 encoded string even if system locale and source file encoding is whatever.
+
+But even with C99, if system is in UTF-8 locale and source file is UTF-8 encoded, I can just put
+UTF-8 multibyte chars in string literals and they seem to work fine, and functions from string.h
+return their lengths in bytes.

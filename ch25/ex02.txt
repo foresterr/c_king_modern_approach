@@ -1,0 +1,21 @@
+int mbcheck(const char *s)
+{
+  int n;
+  for (mblen(NULL, 0); ; s += n)
+    if ((n = mblen(s, MB_CUR_MAX)) <= 0)
+      return n;
+}
+
+I'll separate valid multibyte characters by | and mark invalid ones by !!!
+
+"\x05 | \x87\x80 | \x36 | \xed\xaa"
+Valid sequence, mbcheck will return 0
+
+"\x20 | \xe4\x50 | \x88\x3f !!!"
+Invalid sequence (\x3f is not in legal range for second byte), mbcheck will return -1
+
+"\xde | \xad | \xbe | \xef !!!"
+Invalid sequence (no required second byte after \xef), mbcheck will return -1
+
+"\x8a\x60 | \x92\x74 | \x41"
+Valid sequence, mbcheck will return 0

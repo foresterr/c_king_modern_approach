@@ -1,0 +1,7 @@
+No, it does not.
+First byte of a two-byte character is between 0x81 and 0x9F, or between 0xE0 and 0xEF, and all other
+bytes represent a full character.
+
+Second byte of a two-byte character is between 0x40 and 0x7E, or between 0x80 and 0xFC. There is
+quite a few bytes there (e.g. everything between 0xA0 and 0xDF) that if not preceded by bytes
+from special first-byte-of-two-byte-characters ranges would represent a character on their own.
