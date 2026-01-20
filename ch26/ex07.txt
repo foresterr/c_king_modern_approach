@@ -1,0 +1,12 @@
+value = strtol(p, &p, 10);
+
+This statement will:
+- Skip any whitespace in p
+- Convert p's characters (after any whitespace, if present) to long integer (of base 10, so except
+  for the initial "+" or "-" if present, only digit characters 0-9 will be taken into account for the
+  conversion) and store the result in "value"
+    - If nothing resembling a number is found in p, "value" will be set to 0
+- Set p to point at the next character after last character used for converting to long (p will
+  point to \0 afterwards if all characters in p past the initial whitespace were converted, or will
+  retain its original value if nothing resembling a number was found in the string to which it's
+  pointing)

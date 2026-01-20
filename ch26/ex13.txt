@@ -1,0 +1,15 @@
+(a) Year followed by day of year: YYYY–DDD, where DDD is a number between 001 and 366
+
+"%Y-%j"
+
+(b) Year, week, and day of week: YYYY–Www–D, where ww is a number between 01 and 53, and D is
+    a digit between 1 through 7, beginning with Monday and ending with Sunday
+
+"%Y-W%V-%u"
+(interesting that the exercise isn't marked "C99", those ISO 8601 format specs are C99 and there is
+no easy way that I can see that can derive them from what's in C89 - e.g. week number in C89 format
+specs can be 0)
+
+(c) Combined date and time: YYYY–MM–DDThh:mm:ss
+
+"%FT%T"
