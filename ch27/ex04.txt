@@ -1,0 +1,43 @@
+int i;
+float f;
+double d;
+long double ld;
+float complex fc;
+double complex dc;
+long double complex ldc;
+
+(a) tan(i)
+  tan(i)
+
+(b) fabs(f)
+  fabsf(f)
+
+(c) asin(d)
+  asin(d)
+
+(d) exp(ld)
+  expl(ld)
+
+(e) log(fc)
+  clogf(fc)
+
+(f) acosh(dc)
+  cacosh(dc)
+
+(g) nexttoward(d, ld)
+  nexttoward(d, ld)
+
+(h) remainder(f, i)
+  remainder(f, i)
+
+(i) copysign(d, ld)
+  copysignl(d, ld)
+
+(j) carg(i)
+  carg(i)
+
+(k) cimag(f)
+  cimagf(f)
+
+(l) conj(ldc)
+  conjl(ldc)

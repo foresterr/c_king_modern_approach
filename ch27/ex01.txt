@@ -1,0 +1,4 @@
+The types should be defined in /usr/include/stdint.h, but through a subsequent include they are
+actually defined in /usr/include/x86_64-linux-gnu/bits/stdint-intn.h and /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h
+
+Supported values are 8, 16, 32 and 64

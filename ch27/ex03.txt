@@ -1,0 +1,23 @@
+(a) printf("%d", i);
+Original type: int
+New type: int8_t
+
+printf("%" PRId8, i);
+
+(b) printf("%12.4d", i);
+Original type: int
+New type: int32_t
+
+printf("%12.4" PRId32, i);
+
+(c) printf("%-6o", i);
+Original type: unsigned int
+New type: uint16_t
+
+printf("%-6" PRIo16, i);
+
+(d) printf("%#x", i);
+Original type: unsigned int
+New type: uint64_t
+
+printf("%#" PRIx64, i);
